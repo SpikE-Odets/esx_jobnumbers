@@ -12,6 +12,7 @@ This script is setup to handle multiple job names for same occupation.
 
 example:
 
-if  exports["esx_jobnumbers"]:jobonline('cops') > PoliceNeeded then  -- will return the amount of all workers for the job listed in the config list called cops (example has  'police', 'sheriff')
+- if  exports["esx_jobnumbers"]:jobonline('cops') > PoliceNeeded then 
+  - will return the amount of all workers for the job listed in the config list called cops (example has  'police', 'sheriff')
 
 
