@@ -5,7 +5,7 @@ This is a simple Dev Resource that will allow you to pull the amount of people o
 
 example: 
 
-if  exports["esx_jobnumbers"]:jobonline('police') > PoliceNeeded then
+- if  exports["esx_jobnumbers"]:jobonline('police') > PoliceNeeded then
 
 
 This script is setup to handle multiple job names for same occupation.
