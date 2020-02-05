@@ -30,8 +30,8 @@ AddEventHandler('esx_jobnumbers:setjobs', function(jobslist)
 end)
 
   -- uncomment this if you want to make sure the script is updating   just use command /jobonline jobname
-
-  RegisterCommand('jobonline', function(source, args, rawCommand)
+--[[
+RegisterCommand('jobonline', function(source, args, rawCommand)
     local jobname = args[1]
     if args[1] ~= 'all' then
         print('This is how many '.. tostring(args[1]) ..' are online: '..  tostring(exports["esx_jobnumbers"]:jobonline(jobname)))
@@ -43,7 +43,7 @@ end)
         print('Ending print List')
     end
 end)
-
+]]
 
 function jobonline(joblist)
     for i,v in pairs(Config.MultiNameJobs) do
