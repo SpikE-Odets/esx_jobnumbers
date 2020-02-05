@@ -74,7 +74,7 @@ Citizen.CreateThread(function()
                 table.insert(serverjobs, buildlist)
             end
             AnnounceJobs()
-            table.remove(currentplayer[1])
+            table.remove(currentplayer, 1)
             sleep = 0
         end
         Citizen.Wait(sleep)
