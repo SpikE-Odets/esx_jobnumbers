@@ -9,8 +9,8 @@ AddEventHandler('playerDropped', function()
    table.insert(droppedplayer, _source)
 end)
 
-RegisterServerEvent('esx_jobnumbers:setjobs')
-AddEventHandler('esx_jobnumbers:setjobs', function(jobname)
+RegisterServerEvent('esx_jobnumbers:setjobnumbers')
+AddEventHandler('esx_jobnumbers:setjobnumbers', function(jobname)
     local _source = source 
     local buildlist = { id = _source, job = jobname,}
     table.insert(currentplayer, buildlist)
@@ -33,7 +33,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        sleep = 50
+        sleep = 1000
         if #droppedplayer > 0 then
             for i, v in pairs(serverjobs) do
                 if v.id == droppedplayer[1] then
@@ -43,9 +43,8 @@ Citizen.CreateThread(function()
             end
             AnnounceJobs()
             table.remove(droppedplayer, 1)
-            sleep = 0
         end
-
+        
         if #currentplayer > 0 then
             local updated = false
             for i, v in pairs(serverjobs) do
@@ -74,9 +73,11 @@ Citizen.CreateThread(function()
                 buildlist = { id = currentplayer[1].id, jobname = currentplayer[1].job.name}
                 table.insert(serverjobs, buildlist)
             end
+            print('running announcejob for currentplayer')
             AnnounceJobs()
             table.remove(currentplayer, 1)
-            sleep = 0
+
+            print('This is after accouncejobs: '..tostring(#currentplayer))
         end
         Citizen.Wait(sleep)
 	end

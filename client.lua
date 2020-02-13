@@ -15,12 +15,12 @@ end)
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
-	TriggerServerEvent('esx_jobnumbers:setjobs', job)
+	TriggerServerEvent('esx_jobnumbers:setjobnumbers', job)
 end)
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
-    TriggerServerEvent('esx_jobnumbers:setjobs', xPlayer.job)
+    TriggerServerEvent('esx_jobnumbers:setjobnumbers', xPlayer.job)
 end)
 
 
