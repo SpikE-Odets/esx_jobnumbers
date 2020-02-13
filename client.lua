@@ -24,27 +24,51 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 end)
 
 
+--[[
+
+Copy and paste this function into any Client script that you want to be able to check the numbers for jobs online.
+this will still allow for multiple job names like  cops = {'police', 'sheriff',},
+
+----- Client Event   -------
+local JobCount = {}
 RegisterNetEvent('esx_jobnumbers:setjobs')
 AddEventHandler('esx_jobnumbers:setjobs', function(jobslist)
-   JobCount = jobslist
+    JobCount = jobslist
+    
+    if JobCount['cops'] ~= nil then
+		CopsOnline = JobCount['cops']
+	else
+	    CopsOnline = 0
+    end
+    
+    
+    if JobCount['ambulance'] ~= nil then
+		EmsOnline = JobCount['ambulance']
+	else
+		EmsOnline = 0
+    end
+
 end)
 
-function jobonline(joblist)
-    for i,v in pairs(Config.MultiNameJobs) do
-        for u,c in pairs(v) do
-            if c == joblist then
-                joblist = i
-            end
-        end
+----- Server Event ------
+local JobCount = {}        
+RegisterServerEvent('esx_jobnumbers:setjobs')
+AddEventHandler('esx_jobnumbers:setjobs', function(jobslist)
+    JobCount = jobslist
+    
+    if JobCount['cops'] ~= nil then
+        CopsOnline = JobCount['cops']
+    else
+        CopsOnline = 0
     end
-
-    local amount = 0
-    local job = joblist
-    if JobCount[job] ~= nil then
-        amount = JobCount[job]
+    
+    if JobCount['ambulance'] ~= nil then
+        EmsOnline = JobCount['ambulance']
+    else
+        EmsOnline = 0
     end
+end)
 
-    return amount
-end
 
+]]
 

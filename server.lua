@@ -27,6 +27,7 @@ function AnnounceJobs()
         end
     end
     TriggerClientEvent('esx_jobnumbers:setjobs', -1, sendingjobs)
+    TriggerEvent('esx_jobnumbers:setjobs', sendingjobs)
 end
 
 
