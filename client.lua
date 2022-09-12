@@ -1,4 +1,5 @@
 local JobCount = {}
+local PlayerData = {}
 
 
 Citizen.CreateThread(function()
@@ -10,12 +11,16 @@ Citizen.CreateThread(function()
 		Citizen.Wait(10)
 	end
 	PlayerData = ESX.GetPlayerData()
+
+    if PlayerData.job ~= nil then
+        TriggerServerEvent('esx_jobnumbers:setjobnumbers', PlayerData.job)
+    end
 end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
-	TriggerServerEvent('esx_jobnumbers:setjobnumbers', job)
+	TriggerServerEvent('esx_jobnumbers:changejob', job)
 end)
 
 RegisterNetEvent('esx:playerLoaded')
@@ -23,52 +28,4 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     TriggerServerEvent('esx_jobnumbers:setjobnumbers', xPlayer.job)
 end)
 
-
---[[
-
-Copy and paste this function into any Client script that you want to be able to check the numbers for jobs online.
-this will still allow for multiple job names like  cops = {'police', 'sheriff',},
-
------ Client Event   -------
-local JobCount = {}
-RegisterNetEvent('esx_jobnumbers:setjobs')
-AddEventHandler('esx_jobnumbers:setjobs', function(jobslist)
-    JobCount = jobslist
-    
-    if JobCount['cops'] ~= nil then
-		CopsOnline = JobCount['cops']
-	else
-	    CopsOnline = 0
-    end
-    
-    
-    if JobCount['ambulance'] ~= nil then
-		EmsOnline = JobCount['ambulance']
-	else
-		EmsOnline = 0
-    end
-
-end)
-
------ Server Event ------
-local JobCount = {}        
-RegisterServerEvent('esx_jobnumbers:setjobs')
-AddEventHandler('esx_jobnumbers:setjobs', function(jobslist)
-    JobCount = jobslist
-    
-    if JobCount['cops'] ~= nil then
-        CopsOnline = JobCount['cops']
-    else
-        CopsOnline = 0
-    end
-    
-    if JobCount['ambulance'] ~= nil then
-        EmsOnline = JobCount['ambulance']
-    else
-        EmsOnline = 0
-    end
-end)
-
-
-]]
 
