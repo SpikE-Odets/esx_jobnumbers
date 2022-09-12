@@ -15,3 +15,31 @@ if GlobalState.jobnumbers['cops'] > 0 then
   is set as a police
 
 end
+
+
+
+You will need to Edit the Config.Jobnames to suit your server, but I have left in general names to give you and example. 
+
+You can use 
+
+Config.JobNames = {
+   ['police'] = 'cops',
+   ['sheriff'] = 'cops',
+   ['ambulance'] = 'medic',
+   ['doctor'] = 'medic',
+   ['mechanic'] = 'mechanic',
+}
+
+and you can count  police/sheriff in the same total.. or you can do
+
+Config.JobNames = {
+   ['police'] = 'police',
+   ['sheriff'] = 'sheriff',
+   ['ambulance'] = 'ambulance',
+   ['doctor'] = 'doctor',
+   ['mechanic'] = 'mechanic',
+}
+
+and each job will have a seperate count.
+
+SpikE
