@@ -12,9 +12,6 @@ Citizen.CreateThread(function()
 	end
 	PlayerData = ESX.GetPlayerData()
 
-    if PlayerData.job ~= nil then
-        TriggerServerEvent('esx_jobnumbers:setjobnumbers', PlayerData.job)
-    end
 end)
 
 RegisterNetEvent('esx:setJob')
