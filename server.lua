@@ -16,8 +16,10 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 AddEventHandler('playerDropped', function()
     _source = source
     local currentjob = currentplayers[_source]
-    currentcounts[currentjob] = currentcounts[currentjob] - 1
-    GlobalState.jobnumbers = currentcounts
+    if currentcounts[currentjob] > 0 then
+        currentcounts[currentjob] = currentcounts[currentjob] - 1
+        GlobalState.jobnumbers = currentcounts
+    end
 end)
 
 RegisterServerEvent('esx_jobnumbers:setjobnumbers')
